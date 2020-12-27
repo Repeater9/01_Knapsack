@@ -25,8 +25,8 @@ int main()
         //P.gdByProfitDensity();
         //P.K_optimal(K);
         //P.dp();
-        //P.Backtracking();
-        //P.FIFO();
+        P.Backtracking();
+        P.FIFO();
         P.LC();
 
         end = clock();
