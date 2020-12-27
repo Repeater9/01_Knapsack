@@ -2,6 +2,8 @@
 #include<string>
 #include<queue>
 #include <iostream>
+#include <time.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -27,6 +29,9 @@ void updateAnswer(int *ans,Node *p, Node *q)
 
 void Knapsack::FIFO() const
 {
+    clock_t begin, end;
+    double duration;
+    begin = clock();
     int *ans = (int *)malloc(num * sizeof(int));
     int bestCost = 0;
     for(int i = 0;i < num;i++)                      //初始化最优成本值
@@ -85,6 +90,9 @@ void Knapsack::FIFO() const
         cout<< ans[i] << " ";
     }
     cout << "\nTotal value: " << sum << endl;
-    cout << endl;
     free(ans);
+    end = clock();
+    duration = (double) (end - begin) / CLOCKS_PER_SEC;
+    cout << "Run time: " << fixed << setprecision(4) << duration << "s" << endl;
+    cout << endl;
 }

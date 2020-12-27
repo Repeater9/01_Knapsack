@@ -2,6 +2,8 @@
 #include<algorithm>
 #include<cstring>
 #include "Knapsack.h"
+#include <time.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -14,6 +16,9 @@ bool cmpByProfitDensity(Item a, Item b) {
 }
 
 void Knapsack::gdByProfit() const {
+    clock_t begin, end;
+    double duration;
+    begin = clock();
     Item* temp = new Item[num];
     bool* ans = new bool[num];
     for (int i = 0; i < num; i++) {
@@ -36,14 +41,20 @@ void Knapsack::gdByProfit() const {
     for (int i = 0; i < num;i++) {
         cout << " " << ans[i];
     }
-    cout << endl << "Used capacity: " << cc << "\t" << "Current profit: " << cp << endl << endl;
+    cout << endl << "Used capacity: " << cc << "\t" << "Current profit: " << cp << endl;
     //print answer
     delete[] temp;
     delete[] ans;
+    end = clock();
+    duration = (double) (end - begin) / CLOCKS_PER_SEC;
+    cout << "Run time: " << fixed << setprecision(4) << duration << "s" << endl << endl;
 }//按价值贪心
 
 
 void Knapsack::gdByProfitDensity() const {
+    clock_t begin, end;
+    double duration;
+    begin = clock();
     Item* temp = new Item[num];
     bool* ans = new bool[num];
     for (int i = 0; i < num; i++) {
@@ -65,10 +76,13 @@ void Knapsack::gdByProfitDensity() const {
     for (int i = 0; i < num;i++) {
         cout << " " << ans[i];
     }
-    cout << endl << "Used capacity: " << cc << "\t" << "Current profit: " << cp << endl << endl;
+    cout << endl << "Used capacity: " << cc << "\t" << "Current profit: " << cp << endl;
     //print answer
     delete[] temp;
     delete[] ans;
+    end = clock();
+    duration = (double) (end - begin) / CLOCKS_PER_SEC;
+    cout << "Run time: " << fixed << setprecision(4) << duration << "s" << endl << endl;
 }//按价值密度贪心
 
 
@@ -123,6 +137,9 @@ void K_Choose(Item* item, bool* bestans, bool* nowans, int num, int ck, int c, i
 }//递归地选择ck个物品
 
 void Knapsack::K_optimal(int k) const {
+    clock_t begin, end;
+    double duration;
+    begin = clock();
     if (k < 0) {
         cout << "invalid k" << endl;
         exit(0);
@@ -166,9 +183,12 @@ void Knapsack::K_optimal(int k) const {
         cout << " " << kbestans[i];
         if (kbestans[i]) cc += item[i].w;
     }
-    cout << endl << "Used capacity: " << cc << "\t" << "Current profit: " << kbestp << endl << endl;//输出最优解
+    cout << endl << "Used capacity: " << cc << "\t" << "Current profit: " << kbestp << endl;//输出最优解
 
     delete[] nowans;
     delete[] kbestans;
     delete[] bestans;
+    end = clock();
+    duration = (double) (end - begin) / CLOCKS_PER_SEC;
+    cout << "Run time: " << fixed << setprecision(4) << duration << "s" << endl << endl;
 }

@@ -2,6 +2,8 @@
 #include "Knapsack.h"
 #include<iostream>
 #include<string>
+#include <time.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -22,6 +24,9 @@ void getAnswer(int *ans,int num,int count)
 
 void Knapsack::LC() const
 {
+    clock_t begin, end;
+    double duration;
+    begin = clock();
     int count = 0;
     int *ans = (int *)malloc(num * sizeof(int));
     Node T;
@@ -75,6 +80,9 @@ void Knapsack::LC() const
         cout << ans[i] << " ";
     }
     cout <<"\nTotal value: " << sum << endl;
+    end = clock();
+    duration = (double) (end - begin) / CLOCKS_PER_SEC;
+    cout << "Run time: " << fixed << setprecision(4) << duration << "s" << endl;
     cout << endl;
     free(ans);
 }

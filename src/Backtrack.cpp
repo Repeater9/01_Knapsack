@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <time.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -65,6 +67,9 @@ void Backtrack(int i)
 
 void Knapsack::Backtracking() const
 {
+    clock_t start, end;
+    double duration;
+    start = clock();
     cw = cp = bestp = 0;
     capacity = c;
     n = num;
@@ -86,7 +91,12 @@ void Knapsack::Backtracking() const
         cout << ans[i] << " ";
     }
     cout << "\nTotal value: " << bestp << endl;
+
+    end = clock();
+    duration = (double) (end - start) / CLOCKS_PER_SEC;
+    cout << "Run time: " << fixed << setprecision(4) << duration << "s" << endl;
     cout << endl;
+
     free(temp);
     free(ans);
     free(x);

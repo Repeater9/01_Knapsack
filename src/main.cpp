@@ -17,21 +17,13 @@ int main()
         Knapsack P(i);
         cout << endl;
 
-        clock_t start, end;
-        double duration;
-        start = clock();
-
         //P.gdByProfit();
         //P.gdByProfitDensity();
         //P.K_optimal(K);
         //P.dp();
-        P.Backtracking();
-        P.FIFO();
-        P.LC();
-
-        end = clock();
-        duration = (double) (end - start) / CLOCKS_PER_SEC;
-        cout << "Run time: " << fixed << setprecision(4) << duration << "s" << endl;
+        //P.Backtracking();
+        //P.FIFO();
+        //P.LC();
 
         cout << "-------------------------------------------\n";
     }
